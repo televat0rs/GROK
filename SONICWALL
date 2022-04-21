@@ -11,8 +11,7 @@ SONICWALL_PROTO proto\=%{WORD:proto}(?:\/%{USERNAME:proto_type})?
 # SONICWALL_PROTO - Extracts protocol information: proto, proto_type
 
 
-# Patterns used
-
+# Patterns used:
 IP	(?:%{IPV6}|%{IPV4})
 BASE10NUM	(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+)))
 HOSTNAME	\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\.?|\b)
