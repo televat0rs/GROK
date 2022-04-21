@@ -1,0 +1,27 @@
+NETGEAR_CMDLOGGER cmd\_logger\_api\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:source_if}\:%{IP:source_ip}\:%{WORD:user}\:%{GREEDYDATA:msg}	
+
+# NETGEAR_CMDLOGGER - Extracts cli commands and executing user: traputil, count, source_if, source_ip, user, msg
+
+NETGEAR_LINKSTATE traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\s%{URIPATH:interface}	
+
+# NETGEAR_LINKSTATE - Extracts linkstate changes and interface information: traputil, count, msg, interface
+
+NETGEAR_LLDP traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\sChassisIDSubtype\:\s%{BASE10NUM:ChassisIDSubtype}\,\sChassisID\:\s%{COMMONMAC:ChassisID}\,\sDeviceClass\:\s%{BASE10NUM:DeviceClass}\,\sInterface\:\s%{URIPATH:interface}	
+
+# NETGEAR_LLDP - Extracts LLDP alert information: traputil, count, msg, ChassisIDSubtype, ChassisID, DeviceClass, interface
+
+NETGEAR_STP traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\s(?:MSTID\:\s)?0(?:,)?\s%{GREEDYDATA:interface}
+
+# NETGEAR_STP - Extracts STP alert information: traputil, count, msg, interface
+
+
+# Patterns used
+
+IP	(?:%{IPV6}|%{IPV4})
+BASE10NUM	(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+)))
+HOSTNAME	\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\.?|\b)
+COMMONMAC	(?:(?:[A-Fa-f0-9]{2}:){5}[A-Fa-f0-9]{2})
+URIPATH	(?:/[A-Za-z0-9$.+!*'(){},~:;=@#%_\-]*)+
+USERNAME	[a-zA-Z0-9._-]+
+USERNAMESPACE	[a-zA-Z0-9._-\s]+
+WORD	\b\w+\b
