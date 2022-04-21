@@ -1,0 +1,20 @@
+SONICWALL_SRC src\=(?:%{IP:src_ip})(?:\:)?(?:%{BASE10NUM:src_port})?(?:\:)?(?:(?:%{USERNAME:src_if})?(?:(\-[A-Za-z]%{BASE10NUM:src_vlan}))?)?(?:\:)?(?:%{HOSTNAME:src_hostname})?
+
+# SONICWALL_SRC - Extracts source information: src_ip, src_port, src_if, src_vlan, src_hostname
+
+SONICWALL_DST dst\=(?:%{IP:dst_ip})?(?:\:)?(?:%{BASE10NUM:dst_port})?(?:\:)?(?:(?:%{USERNAME:dst_if})?(?:(\-[A-Za-z]%{BASE10NUM:dst_vlan}))?)?(?:\:)?(?:%{HOSTNAME:dst_hostname})?
+
+# SONICWALL_DST - Extracts destination information: dst_ip, dst_port, , dst_if, dst_vlan, dst_hostname
+
+SONICWALL_PROTO proto\=%{WORD:proto}(?:\/%{USERNAME:proto_type})?
+
+# SONICWALL_PROTO - Extracts protocol information: proto, proto_type
+
+
+# Patterns used
+
+IP	(?:%{IPV6}|%{IPV4})
+BASE10NUM	(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+)))
+HOSTNAME	\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\.?|\b)
+USERNAME	[a-zA-Z0-9._-]+
+WORD	\b\w+\b
