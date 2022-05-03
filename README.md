@@ -1,8 +1,8 @@
 # GROK Patterns
   
-#### Extraction of log message fields from NETGEAR XSM/GSM and SonicWall NSA devices. ####
-
-
+#### Extraction of log message fields from NETGEAR XSM/GSM and SonicWall NSA devices. ####  
+  
+  
 ### NETGEAR Extractors - ###  
 >NETGEAR_CMDLOGGER: Extracts cli commands and executing user: traputil, count, source_if, source_ip, user, msg  
 >NETGEAR_LINKSTATE: Extracts linkstate changes and interface information: traputil, count, msg, interface  
