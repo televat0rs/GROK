@@ -1,6 +1,6 @@
 # GROK Patterns
   
-`Extraction of log message fields from NETGEAR XSM/GSM and SonicWall NSA devices.`
+#### Extraction of log message fields from NETGEAR XSM/GSM and SonicWall NSA devices. ####
 
   &nbsp;
 ### NETGEAR Extractors - ###
