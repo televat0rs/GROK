@@ -4,14 +4,17 @@
 # NETGEAR_STP       - Extracts STP alert information: traputil, count, msg, interface
 
 
-NETGEAR_CMDLOGGER cmd\_logger\_api\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:source_if}\:%{IP:source_ip}\:%{WORD:user}\:%{GREEDYDATA:msg}	
+NETGEAR_CMDLOGGER:
+cmd\_logger\_api\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:source_if}\:%{IP:source_ip}\:%{WORD:user}\:%{GREEDYDATA:msg}	
 #
-NETGEAR_LINKSTATE traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\s%{URIPATH:interface}	
+NETGEAR_LINKSTATE:
+traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\s%{URIPATH:interface}	
 #
-NETGEAR_LLDP traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\sChassisIDSubtype\:\s%{BASE10NUM:ChassisIDSubtype}\,\sChassisID\:\s%{COMMONMAC:ChassisID}\,\sDeviceClass\:\s%{BASE10NUM:DeviceClass}\,\sInterface\:\s%{URIPATH:interface}	
+NETGEAR_LLDP:
+traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\sChassisIDSubtype\:\s%{BASE10NUM:ChassisIDSubtype}\,\sChassisID\:\s%{COMMONMAC:ChassisID}\,\sDeviceClass\:\s%{BASE10NUM:DeviceClass}\,\sInterface\:\s%{URIPATH:interface}	
 #
-NETGEAR_STP traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\s(?:MSTID\:\s)?0(?:,)?\s%{GREEDYDATA:interface}
-
+NETGEAR_STP:
+traputil\.c\(%{BASE10NUM:traputil}\)\s%{BASE10NUM:count}\s\%\%\s%{USERNAMESPACE:msg}\:\s(?:MSTID\:\s)?0(?:,)?\s%{GREEDYDATA:interface}
 
 
 # Patterns used:
